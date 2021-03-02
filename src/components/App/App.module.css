@@ -1,0 +1,29 @@
+.container {
+  /*margin: 0 auto;*/
+  width: 800px;
+  padding: 40px;
+  position: relative;
+}
+
+.tittle {
+  color: rgb(81, 81, 201);
+  font-size: 40px;
+}
+
+.appear {
+  transform: translateX(-100%);
+}
+
+.appearActive {
+  transform: translateX(0);
+  transition: all 500ms linear;
+}
+
+.filter {
+  width: 500px;
+  display: block;
+  text-align: center;
+  border: 1px solid rgb(197, 195, 195);
+  border-radius: 5px;
+  box-shadow: 5px 2px 2px rgb(197, 195, 195);
+}

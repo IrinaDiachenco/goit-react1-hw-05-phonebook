@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
+import { CSSTransition } from 'react-transition-group';
+import styles from './App.module.css';
 
 class App extends Component {
  static defaultProps = {
@@ -59,11 +61,22 @@ class App extends Component {
   render() {
     const { filter } = this.state
     const visibleContacts = this.getVisibleContacts();
-    return (<div>
-      <h2>Phonebook</h2>
+    return (
+      <div className={styles.container}>
+      <CSSTransition
+        in={true}
+        appear={true}
+        classNames={styles}
+        timeout={500}
+        >
+        <h2 className={styles.tittle}>Phonebook</h2>
+      </CSSTransition>
+
       <ContactForm onAdd={this.handleAddContact} contacts={this.state.contacts}/>
-      <h2>Contacts</h2>
+      <div className={styles.filter}>
+        <h2>find contact</h2>
       <Filter filter={filter} onChange={this.handleFilterChange} />
+      </div>
       <ContactList contacts={visibleContacts} onRemove={this.handleRemoveContact} />
     </div>
     );

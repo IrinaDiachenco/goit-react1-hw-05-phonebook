@@ -1,0 +1,12 @@
+.input {
+  width: 250px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.input:hover {
+  border: 2px solid rgb(81, 81, 201);
+}
