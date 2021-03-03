@@ -16,20 +16,23 @@ const ContactList = ({ contacts, onRemove, id }) => {
     if (contacts.length === 0) return null
     return (
         <TransitionGroup component="ul" className={styles.list}>
-            {contacts.map(contacts =>
-            <CSSTransition
-                key={id}
-                classNames={styles}
-                timeout={300}
-            >
-                <ContactListItem {...contacts} onRemove={onRemove} />
-            </CSSTransition>
-            )}
+            {contacts.map(contacts => {
+                return (
+                    <CSSTransition
+                        key={id}
+                        classNames={styles}
+                        timeout={300}
+                        unmountOnExit
+                    >
+                        <ContactListItem {...contacts} onRemove={onRemove} />
+                    </CSSTransition>
+                );
+            })}
         </TransitionGroup>
     )
 };
 ContactListItem.propTypes = {
-        //id: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
         onRemove: PropTypes.func.isRequired,

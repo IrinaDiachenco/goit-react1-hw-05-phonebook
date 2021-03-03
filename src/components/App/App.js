@@ -13,10 +13,7 @@ class App extends Component {
     number: '',
   };
   state = {
-    contacts: [      { id: 'id-1', name: 'Rosie Simpson', phone: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', phone: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', phone: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', phone: '227-91-26' },],
+    contacts: [ ],
     filter: '',
   }
 
@@ -49,12 +46,12 @@ class App extends Component {
           contacts: parsedContacts,
         };
       });
-    }
+    }  
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+        localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
 
@@ -68,6 +65,7 @@ class App extends Component {
         appear={true}
         classNames={styles}
         timeout={500}
+        unmountOnExit
         >
         <h2 className={styles.tittle}>Phonebook</h2>
       </CSSTransition>
@@ -76,9 +74,9 @@ class App extends Component {
       <div className={styles.filter}>
         <h2>find contact</h2>
       <Filter filter={filter} onChange={this.handleFilterChange} />
-      </div>
+        </div>
       <ContactList contacts={visibleContacts} onRemove={this.handleRemoveContact} />
-    </div>
+  </div>
     );
   }
 }

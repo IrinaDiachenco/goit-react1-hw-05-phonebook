@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './Filter.module.css';
 
 const Filter = ({ filter, onChange }) => {
-  const uniqId = uuidv4();
+  const id = uuidv4();
   return (
     <input
       className={styles.input}
@@ -13,7 +13,7 @@ const Filter = ({ filter, onChange }) => {
       value={filter}
       onChange={({ target }) => onChange(target.value)}
       placeholder='Enter name for Search'
-      id={uniqId}
+      id={id}
     />
   )
 };
